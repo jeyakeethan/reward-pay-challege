@@ -1,95 +1,103 @@
-# RewardPay Coding Challenge
+
+# RewardPay Finance Metrics Calculator
 
 ## Overview
 
-This repo contains the instructions and the data you need to complete the _RewardPay coding challenge_.  This challenge is not intended to be complex, but it is an opportunity for you to showcase your understanding and applying of good development practices.
+This program calculates key financial metrics from a provided dataset (`data.json`). It processes the data and prints the results in a readable format. The metrics include:
 
-You are encouraged to treat this as a real-life project.  This typically means:
+- **Revenue**
+- **Expenses**
+- **Gross Profit Margin**
+- **Net Profit Margin**
+- **Working Capital Ratio**
 
-- Use version control effectively
-- Include some basic documentation
-- Include some unit tests
-- Adhere to a naming convention
+## How to Run
 
-Please use JavaScript of TypeScript to complete this challenge.
+### Prerequisites
+Ensure you have the following installed:
+- Node.js (v14.x or later)
+- npm (Node Package Manager)
 
-## The Challenge
+### Steps to Run
+1. Clone this repository:
+   ```bash
+   git clone https://github.com/jeyakeethan/reward-pay-challege.git
+   cd reward-pay-challege
+   ```
 
-You are tasked with developing an application that performs the following tasks in sequence:
+2. Install the required dependencies:
+   ```bash
+   npm install
+   ```
 
-- Read and parse an external data file `data.json` (located in this repo)
-- Using this data, calculate and print the values of 5 common accounting metrics:
-  1. Revenue
-  2. Expenses
-  3. Gross Profit Margin
-  4. Net Profit Margin
-  5. Working Capital Ratio
-- Commit your changes, and upload all your work to a feature branch of your choice.
+3. Start the program:
+   ```bash
+   npm start
+   ```
 
-## Instructions
+4. The output will display the calculated metrics in the terminal.
 
-- Begin by _forking_ the current repository to your own `github.com` account
-- Clone the repo locally
-- Write your code, _commit often_
-- Once you are satisfied with the output, push your changes to your `github.com` account
-- Share the link
+### Example Output
+```plaintext
+> reward-pay-challege@1.0.0 start
+> node program.js
 
-## Calculations
+Metrics:
+Revenue: $32,431
+Expenses: $36,530
+Gross Profit Margin: 0.0%
+Net Profit Margin: -12.6%
+Working Capital Ratio: 118.8%
+```
 
-Use the formulas below to calculate your values:
+## Code Structure
 
-### Revenue
+- **`program.js`**: The main file containing logic to parse data and calculate metrics.
+- **`data.json`**: The dataset used for calculations.
+- **`package.json`**: Defines project metadata and dependencies.
 
-This should be calculated by adding up all the values under `total_value` where the `account_category` field is set to `revenue`
+## Metrics Calculation
 
-### Expenses
+- **Revenue**: Sum of all `total_value` fields with `account_category: revenue`.
+- **Expenses**: Sum of all `total_value` fields with `account_category: expense`.
+- **Gross Profit Margin**: Calculated as:
+  ```math
+  (Sales Revenue - Cost of Goods Sold) / Revenue * 100
+  ```
+- **Net Profit Margin**: Calculated as:
+  ```math
+  (Revenue - Expenses) / Revenue * 100
+  ```
+- **Working Capital Ratio**: Calculated as:
+  ```math
+  Total Current Assets / Total Current Liabilities
+  ```
 
-This should be calculated by adding up all the values under `total_value` where the `account_category` field is set to `expense`
-
-### Gross Profit Margin
-
-This is calculated in two steps: first by adding all the `total_value` fields where the `account_type` is set to `sales` and the `value_type` is set to `debit`; then dividing that by the `revenue` value calculated earlier to generate a percentage value.
-
-### Net Profit Margin
-
-This metric is calculated by subtracting the `expenses` value from the `revenue` value and dividing the remainder by `revenue` to calculate a percentage.
-
-### Working Capital Ratio
-
-This is calculated dividing the `assets` by the `liabilities` creating a percentage value where `assets` are calculated by:
-
-- adding the `total_value` from all records where the `account_category` is set to `assets`, the `value_type` is set to `debit`, and the `account_type` is one of `current`, `bank`, or `current_accounts_receivable`
-- subtracting the `total_value` from all records where the `account_category` is set to `assets`, the `value_type` is set to `credit`, and the `account_type` is one of `current`, `bank`, or `current_accounts_receivable`
-
-and liabilities are calculated by:
-
-- adding the `total_value` from all records where the `account_category` is set to `liability`, the `value_type` is set to `credit`, and the `account_type` is one of `current` or `current_accounts_payable`
-- subtracting the `total_value` from all records where the `account_category` is set to `liability`, the `value_type` is set to `debit`, and the `account_type` is one `current` or `current_accounts_payable`
+Refer to the comments in `program.js` for detailed implementation.
 
 ## Formatting
 
-All currency figures must be formatted as follows:
-- The value is prefixed with a `$` sign
-- A comma is used to separate every 3 digits in the thousands, millions, billions, and trillions
-- Cents are removed
+- **Currency**: Displayed in the format `$xx,xxx`.
+- **Percentages**: Displayed with one decimal point, e.g., `12.6%`.
 
-All percentage values must be formatted to one decimal digit and be prefixed with a `%` sign.  Don't forget to multiply by 100 each time you're tasked with calculating a percentage value.
+## Dependencies
 
-## Example
+This project uses:
+- Node.js core modules like `fs` for file handling.
 
-Below is what a typical output should look like.  Please note this is *not* the output of the challenge but a mere example.
-
-```
-$ ./myChallenge
-Revenue: $519,169
-Expenses: $411,664
-Gross Profit Margin: 22%
-Net Profit Margin: 21%
-Working Capital Ratio: 95%
+Install dependencies with:
+```bash
+npm install
 ```
 
-# Dependencies
+## Contributing
 
-If your program requires a special way to compile or a specific version of a toolset, please be sure to include that in your running instructions.
+Feel free to fork this repository, make your changes, and submit a pull request.
 
-__Thank you and good luck!__
+## License
+
+Open license.
+
+## Author
+
+Developed by Jeyakeethan.

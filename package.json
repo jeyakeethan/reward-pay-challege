@@ -1,0 +1,26 @@
+{
+  "name": "reward-pay-challege",
+  "version": "1.0.0",
+  "description": "Finance Calculator",
+  "main": "program.js",
+  "scripts": {
+    "start": "node program.js",
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jeyakeethan/reward-pay-challege.git"
+  },
+  "keywords": [
+    "rewardpay"
+  ],
+  "author": "J",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jeyakeethan/reward-pay-challege/issues"
+  },
+  "homepage": "https://github.com/jeyakeethan/reward-pay-challege#readme",
+  "dependencies": {
+    "fs": "^0.0.1-security"
+  }
+}
